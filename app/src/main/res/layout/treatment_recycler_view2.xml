@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:layout_width="376dp"
+        android:layout_height="21dp"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="22dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        tools:text="@tools:sample/full_names"
+        android:id="@+id/doc_n"/>
+
+        />
+    <TextView
+        android:layout_width="376dp"
+        android:layout_height="21dp"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="22dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        tools:text="@tools:sample/full_names"
+        android:id="@+id/date_1"
+        android:layout_below="@id/doc_n"/>
+
+    />
+
+    <TextView
+        android:layout_width="376dp"
+        android:layout_height="21dp"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:layout_marginTop="5dp"
+        tools:layout_editor_absoluteX="35dp"
+        android:layout_marginStart="10dp"
+        tools:layout_editor_absoluteY="22dp"
+       android:id="@+id/p_desc"
+        tools:text="@tools:sample/full_names"
+      android:layout_below="@+id/date_1"
+        />
+
+
+
+</RelativeLayout>

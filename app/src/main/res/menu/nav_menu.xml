@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/ad"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Appointment Details"
+        />
+    <item
+        android:id="@+id/th"
+        android:icon="@drawable/ic_baseline_history_24"
+        android:title="Treatment History" />
+    <item
+        android:id="@+id/up"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="User Profile" />
+</menu>

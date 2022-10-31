@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "837060825707",
+    "project_id": "hosp-a304a",
+    "storage_bucket": "hosp-a304a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837060825707:android:9a631e77cd04ae815c972e",
+        "android_client_info": {
+          "package_name": "com.poc.onlinehospitalappointment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "837060825707-prq2t8412itvftkrpan3jr34lq9u5sit.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7j8pNowowYpa_l8A4YfryPbv6C19k50o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "837060825707-prq2t8412itvftkrpan3jr34lq9u5sit.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

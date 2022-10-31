@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+
+    <TextView
+        android:id="@+id/dc_john"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="10dp"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:text="Dr Johnsmith, Cardiologist" />
+
+
+
+    <TextView
+        android:id="@+id/dc_d"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp"
+        android:inputType="date"
+        android:layout_below="@id/dc_john"
+        android:textSize="18sp"
+       android:text="Date" />
+
+    <TextView
+        android:id="@+id/dc_des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp"
+        android:layout_below="@id/dc_d"
+        android:textSize="18sp"
+       android:text="Descrption"
+      />
+<View
+    android:layout_width="wrap_content"
+    android:layout_height="1dp"
+    android:background="@color/black"/>
+
+    </LinearLayout>
+</RelativeLayout>

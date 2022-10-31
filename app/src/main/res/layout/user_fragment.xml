@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="Setting fragment" />-->
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <ImageView
+                android:id="@+id/pfl"
+                android:layout_width="match_parent"
+                android:layout_height="219dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ic_baseline_account_circle_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name: Sapthami"
+                android:textSize="30dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_below="@id/pfl"
+                android:textStyle="normal"
+                android:id="@+id/name_sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Age: 22"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:textSize="30dp"
+                android:textStyle="normal"
+                android:id="@+id/age"
+                android:layout_below="@id/name_sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gender: Female"
+                android:textSize="30dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:textStyle="normal"
+                android:id="@+id/fema"
+                android:layout_below="@id/age"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Blood Group: A+ve"
+                android:textSize="30dp"
+                android:textStyle="normal"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/bld"
+                android:layout_below="@id/fema"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DOB: 20-02-1998"
+                android:textSize="30dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:textStyle="normal"
+                android:id="@+id/dob"
+                android:layout_below="@id/bld"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address: Bangalore"
+                android:textSize="30dp"
+                android:textStyle="normal"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/add"
+                android:layout_below="@id/dob"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact no: 9880341696"
+                android:textSize="30dp"
+                android:textStyle="normal"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/cnt"
+                android:layout_below="@id/add"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Emergency no: 8317322693"
+                android:textSize="30dp"
+                android:layout_marginBottom="30dp"
+                android:textStyle="normal"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/emr"
+                android:layout_below="@id/cnt"
+                />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</FrameLayout>
