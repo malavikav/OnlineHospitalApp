@@ -11,8 +11,6 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val actionBar: ActionBar? = supportActionBar
-        actionBar?.hide()
         sharedPreferance = SharedPreferenceClass
         SharedPreferenceClass.init(applicationContext)!!
     }
