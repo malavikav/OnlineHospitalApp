@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.poc.onlinehospitalappointment.R
 import com.poc.onlinehospitalappointment.data.Doctor
@@ -20,7 +21,7 @@ class DoctorAdapter(private val DoctorList: ArrayList<Doctor>) : RecyclerView.Ad
         val DSpec:TextView = itemView.findViewById(R.id.dc_spec)
         val DDes: TextView = itemView.findViewById(R.id.dc_spe)
         val DDeg: TextView = itemView.findViewById(R.id.dc_deg)
-        val DBtn: Button = itemView.findViewById(R.id.dc_btn)
+        val DBtn: AppCompatTextView = itemView.findViewById(R.id.dc_btn)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

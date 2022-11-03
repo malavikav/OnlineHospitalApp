@@ -7,4 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+
+
+    <color name="orange_color">#EF4E1C</color>
+    <color name="btn_color">#F04E1D</color>
+    <color name="salt_pink_color">#FCF9F9</color>
+    <color name="rippile_color">#A2A2A2</color>
+    <color name="et_border_color">#747474</color>
+
+
 </resources>
