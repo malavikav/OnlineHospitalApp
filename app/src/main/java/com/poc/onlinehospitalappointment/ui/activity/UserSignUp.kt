@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -31,6 +32,8 @@ class UserSignUp : BaseActivity(), RegistrationActivityCallback {
 
         activityRegistrationBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_user_sign_up)
+        val actionBar: ActionBar? = supportActionBar
+        actionBar?.hide()
         activityRegistrationBinding.registrationActivityCallback = this
         authViewModel = ViewModelProvider(this, Factory(this))[AuthViewModel::class.java]
 
@@ -75,30 +78,30 @@ class UserSignUp : BaseActivity(), RegistrationActivityCallback {
         }
 
 
-       /* activityRegistrationBinding.SignUpBtn.setOnClickListener {
-            val email = activityRegistrationBinding.emailEt.text.toString()
-            val password = activityRegistrationBinding.passwordEt.text.toString()
-            val confirmPassword = activityRegistrationBinding.confirmPwEt.text.toString()
-            val username = activityRegistrationBinding.usernameEt.text.toString()
+        /* activityRegistrationBinding.SignUpBtn.setOnClickListener {
+             val email = activityRegistrationBinding.emailEt.text.toString()
+             val password = activityRegistrationBinding.passwordEt.text.toString()
+             val confirmPassword = activityRegistrationBinding.confirmPwEt.text.toString()
+             val username = activityRegistrationBinding.usernameEt.text.toString()
 
 
-            if (password == confirmPassword) {
+             if (password == confirmPassword) {
 
-                activityRegistrationBinding.emailEt.text.clear()
-                activityRegistrationBinding.passwordEt.text.clear()
-                activityRegistrationBinding.confirmPwEt.text.clear()
-                activityRegistrationBinding.usernameEt.text.clear()
+                 activityRegistrationBinding.emailEt.text.clear()
+                 activityRegistrationBinding.passwordEt.text.clear()
+                 activityRegistrationBinding.confirmPwEt.text.clear()
+                 activityRegistrationBinding.usernameEt.text.clear()
 
-                startActivity(Intent(this, UserLogin::class.java))
-                finish()
+                 startActivity(Intent(this, UserLogin::class.java))
+                 finish()
 
-            } else {
-                Toast.makeText(this, "Insertion Error", Toast.LENGTH_LONG).show()
-            }
+             } else {
+                 Toast.makeText(this, "Insertion Error", Toast.LENGTH_LONG).show()
+             }
 
 
-        }
-*/
+         }
+ */
     }
 
     private fun observeRegister(

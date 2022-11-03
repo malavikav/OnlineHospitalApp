@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -24,6 +25,8 @@ class UserLogin : BaseActivity(), LoginActivityCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_user_login)
+        val actionBar: ActionBar? = supportActionBar
+        actionBar?.hide()
         activityLoginBinding?.loginActivityCallback = this
         authViewModel = ViewModelProvider(this, Factory(this))[AuthViewModel::class.java]
     }
