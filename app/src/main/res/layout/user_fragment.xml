@@ -1,132 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:paddingLeft="@dimen/_20sdp"
+    android:paddingRight="@dimen/_20sdp"
+    android:background="@color/salt_pink_color">
 
-    <!-- TODO: Update blank fragment layout -->
-<!--    <TextView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:text="Setting fragment" />-->
+    <TextView
+        android:id="@+id/update_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/avenirbold"
+        android:gravity="center"
+        android:padding="@dimen/_7sdp"
+        android:text="Update profile"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:layout_height="wrap_content"
+        android:background="@color/salt_pink_color"
+        android:scrollbars="none"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/update_btn">
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/pfl"
-                android:layout_width="match_parent"
-                android:layout_height="219dp"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/ic_baseline_account_circle_24"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_gravity="center_horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
+
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/update_image"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Name: Sapthami"
-                android:textSize="30dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="25dp"
-                android:layout_below="@id/pfl"
-                android:textStyle="normal"
-                android:id="@+id/name_sp"
-                />
+                android:layout_marginLeft="200dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_button"
+                android:fontFamily="@font/avenirbold"
+                android:gravity="center"
+                android:padding="@dimen/_7sdp"
+                android:text="Update image"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/et_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/rounded_edittext"
+                android:ems="10"
+                android:fontFamily="@font/avenirltstd_medium"
+                android:hint="username"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/_7sdp"
+                android:textColor="@color/orange_color"
+                android:textColorHint="@color/rippile_color"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pfl"
+                app:tint="@color/orange_color" />
+
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/email_et"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Age: 22"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="25dp"
-                android:textSize="30dp"
-                android:textStyle="normal"
-                android:id="@+id/age"
-                android:layout_below="@id/name_sp"
-                />
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/rounded_edittext"
+                android:ems="10"
+                android:fontFamily="@font/avenirltstd_medium"
+                android:hint="email"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/_7sdp"
+                android:textColor="@color/orange_color"
+                android:textColorHint="@color/rippile_color"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/email_et" />
+
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/designation"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Gender: Female"
-                android:textSize="30dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="25dp"
-                android:textStyle="normal"
-                android:id="@+id/fema"
-                android:layout_below="@id/age"
-                />
-            <TextView
-                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/rounded_edittext"
+                android:ems="10"
+                android:fontFamily="@font/avenirltstd_medium"
+                android:hint="designation"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/_7sdp"
+                android:textColor="@color/orange_color"
+                android:textColorHint="@color/rippile_color"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/designation" />
+
+            <EditText
+                android:id="@+id/date"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Blood Group: A+ve"
-                android:textSize="30dp"
-                android:textStyle="normal"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="25dp"
-                android:id="@+id/bld"
-                android:layout_below="@id/fema"
-                />
-            <TextView
-                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/rounded_edittext"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:fontFamily="@font/avenirltstd_medium"
+                android:hint="date of birth"
+                android:padding="@dimen/_7sdp"
+                android:textColor="@color/orange_color"
+                android:textColorHint="@color/rippile_color"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/email_et" />
+
+            <EditText
+                android:id="@+id/user_age"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="DOB: 20-02-1998"
-                android:textSize="30dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="25dp"
-                android:textStyle="normal"
-                android:id="@+id/dob"
-                android:layout_below="@id/bld"
-                />
-            <TextView
-                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/rounded_edittext"
+                android:ems="10"
+                android:fontFamily="@font/avenirltstd_medium"
+                android:hint="age"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/_7sdp"
+                android:textColor="@color/orange_color"
+                android:textColorHint="@color/rippile_color"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date" />
+
+            <EditText
+                android:id="@+id/gender"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Address: Bangalore"
-                android:textSize="30dp"
-                android:textStyle="normal"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="25dp"
-                android:id="@+id/add"
-                android:layout_below="@id/dob"
-                />
-            <TextView
-                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/rounded_edittext"
+                android:ems="10"
+                android:fontFamily="@font/avenirltstd_medium"
+                android:hint="Gender"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/_7sdp"
+                android:textColor="@color/orange_color"
+                android:textColorHint="@color/rippile_color"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/user_age" />
+
+            <EditText
+                android:id="@+id/number"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Contact no: 9880341696"
-                android:textSize="30dp"
-                android:textStyle="normal"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="25dp"
-                android:id="@+id/cnt"
-                android:layout_below="@id/add"
-                />
-            <TextView
-                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/rounded_edittext"
+                android:ems="10"
+                android:fontFamily="@font/avenirltstd_medium"
+                android:hint="Phone Number"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/_7sdp"
+                android:textColor="@color/orange_color"
+                android:textColorHint="@color/rippile_color"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date" />
+
+
+            <EditText
+                android:id="@+id/enumber"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Emergency no: 8317322693"
-                android:textSize="30dp"
-                android:layout_marginBottom="30dp"
-                android:textStyle="normal"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="25dp"
-                android:id="@+id/emr"
-                android:layout_below="@id/cnt"
-                />
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/rounded_edittext"
+                android:ems="10"
+                android:fontFamily="@font/avenirltstd_medium"
+                android:hint="Emergency Phone Number"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/_7sdp"
+                android:textColor="@color/orange_color"
+                android:textColorHint="@color/rippile_color"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/number" />
 
 
         </LinearLayout>
 
     </ScrollView>
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
