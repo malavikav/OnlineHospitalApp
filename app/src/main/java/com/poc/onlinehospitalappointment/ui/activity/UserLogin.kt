@@ -34,13 +34,12 @@ class UserLogin : BaseActivity(), LoginActivityCallback {
 
     override fun onLoginClick(view: View) {
         if (activityLoginBinding?.emailEt?.text.toString().isNullOrBlank()) {
-            Toast.makeText(applicationContext, "User name should not be blank", Toast.LENGTH_SHORT)
-                .show()
+            activityLoginBinding?.emailEt?.error = "Email Required"
             return
         }
         if (activityLoginBinding?.passwordEt?.text.toString().isNullOrBlank()) {
-            Toast.makeText(applicationContext, "Password should not be blank", Toast.LENGTH_SHORT)
-                .show()
+            activityLoginBinding?.passwordEt?.error = "Password Required"
+
             return
         }
 
@@ -58,6 +57,7 @@ class UserLogin : BaseActivity(), LoginActivityCallback {
 
     private fun observeLogin(email: String, password: String) {
         authViewModel?.loginUser(email, password)?.observe(this, Observer {
+            activityLoginBinding!!.loader.visibility = View.GONE
             if (it != null) {
                 activityLoginBinding!!.loader.visibility = View.GONE
                 sharedPreferance.write(Constants.IS_USER_LOGGED, true)
@@ -76,7 +76,6 @@ class UserLogin : BaseActivity(), LoginActivityCallback {
     }
 
     private fun showError() {
-        activityLoginBinding!!.loader.visibility = View.GONE
         Toast.makeText(
             applicationContext,
             "Login Failed, please try again",

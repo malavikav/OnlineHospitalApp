@@ -34,25 +34,44 @@ class AuthRepository {
             return registerRepository!!
         }
     }
+
     fun login(email: String, password: String): LiveData<User> {
         val loginData = MutableLiveData<User>()
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(
             OnCompleteListener { result ->
                 val rootRef = FirebaseDatabase.getInstance().reference
-                val userID = auth.currentUser!!.uid
-                val uidRef = rootRef.child(Constants.USER_TABLE).child(userID)
-                uidRef.get().addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        val snapshot = task.result
-                        val fname = snapshot.child("fname").getValue(String::class.java)
-                        val lname = snapshot.child("lname").getValue(String::class.java)
-                        val type = snapshot.child("type").getValue(String::class.java)
-                        Log.e("fname","===>"+fname)
-                        Log.e("lname","===>"+lname)
-                        Log.e("type","===>"+type)
-                        val user = User(fname, lname, type, email, password)
-                        loginData.postValue(user)
+                if (auth.currentUser != null) {
+                    val userID = auth.currentUser!!.uid
+                    val uidRef = rootRef.child(Constants.USER_TABLE).child(userID)
+                    uidRef.get().addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            val snapshot = task.result
+                            val fname = snapshot.child("fname").getValue(String::class.java)
+                            val lname = snapshot.child("lname").getValue(String::class.java)
+                            val type = snapshot.child("type").getValue(String::class.java)
+                            val dob = snapshot.child("dob").getValue(String::class.java)
+                            val age = snapshot.child("age").getValue(String::class.java)
+                            val gender = snapshot.child("gender").getValue(String::class.java)
+                            val number = snapshot.child("number").getValue(String::class.java)
+                            val enumber =
+                                snapshot.child("emergency number").getValue(String::class.java)
+                            Log.e("fname", "===>" + fname)
+                            Log.e("lname", "===>" + lname)
+                            Log.e("type", "===>" + type)
+                            val user = dob?.let {
+                                User(
+                                    userID, fname, lname, type, email, password,
+                                    it, age, gender, number, enumber
+                                )
+                            }
+                            loginData.postValue(user)
+                        }
                     }
+
+                }
+                else
+                {
+                    loginData.postValue(null)
                 }
             })
         return loginData
@@ -64,35 +83,43 @@ class AuthRepository {
         selectedOption: String,
         firstname: String,
         lastname: String,
+        aage: String,
+        date: String,
+        ggender: String,
+        nnumber: String,
+        eenumber: String,
     ): LiveData<Task<AuthResult>> {
         val registerData = MutableLiveData<Task<AuthResult>>()
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(
             OnCompleteListener { result ->
                 val firebaseUser = auth.currentUser
                 val userID = firebaseUser!!.uid
-                Log.e("userID","=====>$userID")
+                Log.e("userID", "=====>$userID")
                 val user = User(
+                    uid = userID,
                     email = email,
                     password = password,
                     type = selectedOption,
                     fname = firstname,
-                    lname = lastname
+                    lname = lastname,
+                    dob = date,
+                    age = aage,
+                    number = nnumber,
+                    enumber = eenumber,
+                    gender = ggender
                 )
                 if (userID != null) {
                     databaseReference.child(userID).setValue(user).addOnCompleteListener(
                         OnCompleteListener {
                             if (it.isSuccessful) {
                                 registerData.postValue(result)
-                            }
-                            else{
-                                Log.e("not Successful","=====>")
+                            } else {
+                                Log.e("not Successful", "=====>")
 
                             }
                         })
-                }
-                else
-                {
-                    Log.e("No userID","=====?")
+                } else {
+                    Log.e("No userID", "=====?")
 
                 }
             })
