@@ -17,6 +17,9 @@ class AuthViewModel(val context: Context) : ViewModel() {
    fun registerUser(email: String, password: String, confirmPass: String ): LiveData<Task<AuthResult>> {
         return AuthRepository.getInstance(context).register(email, password, confirmPass)
     }*/
+//    fun registerUser(email: String, password: String, confirmPass: String ): LiveData<Task<AuthResult>> {
+//        return AuthRepository.getInstance(context).register(email, password, confirmPass)
+//    }
     fun loginUser(email: String, password: String): LiveData<User> {
         return AuthRepository.getInstance(context).login(email, password)
     }

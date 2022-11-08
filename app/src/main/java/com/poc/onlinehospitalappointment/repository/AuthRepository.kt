@@ -12,12 +12,17 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.poc.onlinehospitalappointment.constants.Constants
 import com.poc.onlinehospitalappointment.data.User
+import com.poc.onlinehospitalappointment.preferance.SharedPreferenceClass
 
 class AuthRepository {
 
+    lateinit var sharedPreferance: SharedPreferenceClass
+
     var auth: FirebaseAuth = FirebaseAuth.getInstance()
     var databaseReference: DatabaseReference = FirebaseDatabase.getInstance().getReference("Users")
-
+    init {
+        sharedPreferance = SharedPreferenceClass
+    }
     companion object {
         private var loginRepository: AuthRepository? = null
         private var context: Context? = null
@@ -27,6 +32,7 @@ class AuthRepository {
         @JvmStatic
         fun getInstance(context: Context): AuthRepository {
             this.context = context
+
             if (loginRepository == null) loginRepository = AuthRepository()
             return loginRepository!!
 
@@ -112,6 +118,14 @@ class AuthRepository {
                     databaseReference.child(userID).setValue(user).addOnCompleteListener(
                         OnCompleteListener {
                             if (it.isSuccessful) {
+
+                                sharedPreferance.write(Constants.IS_USER_LOGGED, true)
+                                sharedPreferance.write(Constants.USER_TYPE, selectedOption)
+                                sharedPreferance.write(Constants.USER_FNAME, firstname)
+                                sharedPreferance.write(Constants.USER_LNAME, lastname)
+                                sharedPreferance.write(Constants.USER_ID, userID)
+                                sharedPreferance.write(Constants.USER_EMAIL, email)
+
                                 registerData.postValue(result)
                             } else {
                                 Log.e("not Successful", "=====>")
