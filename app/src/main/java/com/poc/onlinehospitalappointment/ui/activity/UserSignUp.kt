@@ -127,8 +127,7 @@ class UserSignUp : BaseActivity(), RegistrationActivityCallback {
                 activityRegistrationBinding!!.loader.visibility = View.GONE
                 if (it !== null && it.isSuccessful) {
 
-                    sharedPreferance.write(Constants.IS_USER_LOGGED, true)
-                    sharedPreferance.write(Constants.USER_TYPE, selectedOption)
+
                     var intent = Intent(this, MainActivity::class.java)
                     intent.putExtra(Constants.USER_TYPE, selectedOption)
                     startActivity(intent)
