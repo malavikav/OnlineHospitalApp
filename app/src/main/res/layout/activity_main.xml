@@ -20,7 +20,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/nav_menu"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
         android:background="@color/salt_pink_color"/>

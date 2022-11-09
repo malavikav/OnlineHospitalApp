@@ -14,7 +14,7 @@ import com.poc.onlinehospitalappointment.ui.fragment.*
 class MainActivity : BaseActivity() {
     lateinit var bottomNav: BottomNavigationView
     lateinit var recyclerView: RecyclerView
-    lateinit var type: String
+    lateinit var userType: String
     private lateinit var activityMainBinding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,66 +25,46 @@ class MainActivity : BaseActivity() {
         val actionBar: ActionBar? = supportActionBar
         actionBar?.hide()
         bottomNav = findViewById(R.id.bottomNav)
+        userType = sharedPreferance.read(Constants.USER_TYPE, "").toString()
+        if (userType == Constants.DOCTOR) {
+            activityMainBinding.bottomNav.inflateMenu(R.menu.doctor_nav_menu)
+            loadFragment(ApprovedadFragment())
+        } else if (userType == Constants.PATIENT) {
+            activityMainBinding.bottomNav.inflateMenu(R.menu.patient_nav_menu)
+            loadFragment(AppointmentFragment())
 
-        val intent = intent
-        type = intent.getStringExtra(Constants.USER_TYPE).toString()
-        when (type) {
-            "Patient" -> {
-                loadFragment(AppointmentFragment())
-                bottomNav.menu.getItem(0).title = "Appointment Details"
-                bottomNav.menu.getItem(1).title = "Treatment History"
-                bottomNav.menu.getItem(2).title = "User Profile"
 
-            }
-            "Admin" -> {
-                loadFragment(RequestFragement())
-                bottomNav.menu.getItem(0).title = "Request List"
-                bottomNav.menu.getItem(1).title = "Approved List"
-                bottomNav.menu.getItem(2).title = "User Profile"
-            }
-            else -> {
-                loadFragment(ApprovedadFragment())
-                bottomNav.menu.getItem(0).title = "Approved List"
-                bottomNav.menu.getItem(1).title = "Visited List"
-                bottomNav.menu.getItem(2).title = "User Profile"
-            }
+        } else if (userType == Constants.RECEPTIONIST) {
+            activityMainBinding.bottomNav.inflateMenu(R.menu.receptionist_nav_menu)
+            loadFragment(RequestFragement())
         }
+
         bottomNav.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.ad -> {
-                    when (type) {
+                    when (userType) {
                         "Patient" -> {
                             loadFragment(AppointmentFragment())
-                            it.title = "Appointment Details"
-
                         }
-                        "Admin" -> {
+                        "Receptionist" -> {
                             loadFragment(RequestFragement())
-                            it.title = "Request List"
-
                         }
                         else -> {
                             loadFragment(ApprovedadFragment())
-                            it.title = "Approved List"
-
                         }
                     }
                     true
                 }
                 R.id.th -> {
-                    when (type) {
+                    when (userType) {
                         "Patient" -> {
                             loadFragment(TreatmentHistoryFragment())
-                            it.title = "Treatment History"
-
                         }
-                        "Admin" -> {
+                        "Receptionist" -> {
                             loadFragment(ApprovingFragment())
-                            it.title = "Approved List"
                         }
                         else -> {
                             loadFragment(VisitedFragment())
-                            it.title = "Visited List"
                         }
                     }
                     true

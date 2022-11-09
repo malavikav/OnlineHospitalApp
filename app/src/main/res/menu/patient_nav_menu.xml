@@ -2,15 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/ad"
-        android:icon="@drawable/ic_baseline_home_24"
-        android:title="Appointment Details"
-        />
+        android:icon="@drawable/ic_book_appointment_icon"
+        android:title="Appointment Details" />
     <item
         android:id="@+id/th"
-        android:icon="@drawable/ic_baseline_history_24"
+        android:icon="@drawable/ic_treatment_history"
         android:title="Treatment History" />
     <item
         android:id="@+id/up"
-        android:icon="@drawable/user_icon"
+        android:icon="@drawable/ic_patient_profile"
         android:title="User Profile" />
 </menu>
