@@ -64,6 +64,8 @@ class UserLogin : BaseActivity(), LoginActivityCallback {
                 sharedPreferance.write(Constants.USER_FNAME, it.fname)
                 sharedPreferance.write(Constants.USER_LNAME, it.lname)
                 sharedPreferance.write(Constants.USER_TYPE, it.type)
+                sharedPreferance.write(Constants.USER_EMAIL, it.email)
+                sharedPreferance.write(Constants.USER_ID, it.uid)
                 var intent = Intent(this, MainActivity::class.java)
                 intent.putExtra(Constants.USER_TYPE, it.type)
                 startActivity(intent)

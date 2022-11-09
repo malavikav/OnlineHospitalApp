@@ -9,6 +9,10 @@ class Constants {
         const val USER_ID ="USER_ID"
         const val USER_EMAIL ="USER_EMAIL"
 
+        const val DOCTOR = "Doctor"
+        const val PATIENT = "Patient"
+        const val RECEPTIONIST = "Receptionist"
+
         //Firebase Tables
 
         const val USER_TABLE = "Users"
