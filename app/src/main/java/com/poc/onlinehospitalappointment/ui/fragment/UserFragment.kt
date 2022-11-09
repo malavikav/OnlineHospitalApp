@@ -39,11 +39,7 @@ class UserFragment: BaseFragment() {
     lateinit var viewModel: ProfileInfoViewModel
 
 
-  //  var auth: FirebaseAuth = FirebaseAuth.getInstance()
-  //  val rootRef = FirebaseDatabase.getInstance().reference
-   // val userID = auth.currentUser!!.uid
-   // val uidRef = rootRef.child(Constants.USER_TABLE).child(userID)
-
+ 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
