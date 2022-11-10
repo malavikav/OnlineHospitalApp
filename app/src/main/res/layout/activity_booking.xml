@@ -1,69 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ImageView
-        android:id="@+id/img_5"
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/hospitalimg"
-        tools:layout_editor_absoluteX="126dp"
-        tools:layout_editor_absoluteY="16dp" />
-
-    <EditText
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/p_desc"
-        android:inputType="text"
-        android:layout_below="@id/img_5"
-       android:hint="@string/description"
-        android:paddingTop="15dp"
-        />
+        android:layout_height="match_parent"
+        android:padding="@dimen/_20sdp"
+        android:layout_gravity="center"
+        android:background="@color/salt_pink_color">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_5"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/hospitalimg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="@dimen/_70sdp"
+                tools:ignore="MissingConstraints" />
 
 
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/p_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:background="@drawable/rounded_edittext"
+                android:fontFamily="@font/avenirltstd_medium"
+                android:hint="@string/illness_description"
+                android:singleLine="false"
+                android:minLines="3"
+                android:gravity="top"
+                android:padding="@dimen/_7sdp"
+                android:textColor="@color/orange_color"
+                android:textColorHint="@color/rippile_color"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_5"
+                app:tint="@color/orange_color" />
 
-    <EditText
-        android:id="@+id/date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/img_5"
-        android:layout_marginHorizontal="50dp"
-        android:layout_marginTop="72dp"
-        android:drawableEnd="@drawable/ic_baseline_calendar_today_24"
-        android:focusable="false"
-        android:hint="Select Date "
-        android:inputType="date"
-        android:textColor="@color/purple_700"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="195dp" />
+            <EditText
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="52dp"
+                android:layout_marginRight="@dimen/_150sdp"
+                android:drawableEnd="@drawable/c_24"
+                android:fontFamily="@font/avenirltstd_medium"
+                android:hint="Select Date "
+                android:inputType="text"
+                android:padding="@dimen/_7sdp"
+                android:textColor="@color/orange_color"
+                android:textColorHint="@color/rippile_color"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.076"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/p_desc"
+                app:tint="@color/orange_color" />
 
-    <EditText
-        android:id="@+id/time"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="220dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableEnd="@drawable/ic_time_24"
-        android:focusable="false"
-        android:hint="Select Time   "
-        android:inputType="date"
-        android:textStyle="bold"
-        android:layout_toRightOf="@id/date"
-        android:textColor="@color/black" />
+            <EditText
+                android:id="@+id/time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_150sdp"
+                android:layout_marginTop="52dp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:drawableEnd="@drawable/ic_time_24"
+                android:fontFamily="@font/avenirltstd_medium"
+                android:hint="Select Time "
+                android:inputType="text"
+                android:padding="@dimen/_7sdp"
+                android:textColor="@color/orange_color"
+                android:textColorHint="@color/rippile_color"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.923"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/p_desc"
+                app:tint="@color/orange_color" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Book Appointment"
-        android:id="@+id/book"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="30dp"/>
+            <TextView
+                android:id="@+id/book"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_45sdp"
+                android:layout_marginTop="@dimen/_50sdp"
+                android:layout_marginRight="@dimen/_45sdp"
+                android:background="@drawable/rounded_button"
+                android:fontFamily="@font/avenirbold"
+                android:gravity="center"
+                android:padding="@dimen/_7sdp"
+                android:text="Book Appointment"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/time" />
 
-
-</RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
