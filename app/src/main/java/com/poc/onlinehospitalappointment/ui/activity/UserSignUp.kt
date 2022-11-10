@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
+import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.databinding.DataBindingUtil
@@ -20,6 +21,7 @@ import com.poc.onlinehospitalappointment.databinding.ActivityUserSignUpBinding
 import com.poc.onlinehospitalappointment.listeners.RegistrationActivityCallback
 import com.poc.onlinehospitalappointment.repository.Factory
 import com.poc.onlinehospitalappointment.viewmodel.AuthViewModel
+import kotlinx.android.synthetic.main.activity_user_sign_up.*
 
 class UserSignUp : BaseActivity(), RegistrationActivityCallback {
 
@@ -31,10 +33,11 @@ class UserSignUp : BaseActivity(), RegistrationActivityCallback {
     var spinnerItems: ArrayList<String>? = null
     var selectedOption: String? = null
     var selectedPostion: Int? = null
+      var genderOption:String?=null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         activityRegistrationBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_user_sign_up)
         readSpinnerData()
@@ -42,6 +45,16 @@ class UserSignUp : BaseActivity(), RegistrationActivityCallback {
         authViewModel = ViewModelProvider(this, Factory(this))[AuthViewModel::class.java]
         val actionBar: ActionBar? = supportActionBar
         actionBar?.hide()
+
+//        radio_group.setOnCheckedChangeListener { group, checkedId ->
+//            if (checkedId == R.id.male_radioBtn) {
+//                Toast.makeText(this,male_radioBtn.text.toString(),Toast.LENGTH_SHORT).show()
+//            }
+//            if (checkedId == R.id.female_radioBtn) {
+//                Toast.makeText(this,female_radioBtn.text.toString(),Toast.LENGTH_SHORT).show()
+//            }
+//
+//        }
 
         activityRegistrationBinding.emailEt.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(pO: Editable?) {
@@ -170,6 +183,10 @@ class UserSignUp : BaseActivity(), RegistrationActivityCallback {
             activityRegistrationBinding.confirmPw.error = " password should match"
             return
         }
+        if (genderOption.isNullOrBlank()) {
+            Toast.makeText(this, "Please select the Gender", Toast.LENGTH_LONG).show()
+            return
+        }
         if (selectedPostion == 0) {
             Toast.makeText(this, "Please select the Designation", Toast.LENGTH_LONG).show()
             return
@@ -183,7 +200,7 @@ class UserSignUp : BaseActivity(), RegistrationActivityCallback {
             activityRegistrationBinding.lname.text.toString(),
             "",
             "",
-            "",
+            genderOption!!,
             "",
             ""
         )
@@ -192,13 +209,11 @@ class UserSignUp : BaseActivity(), RegistrationActivityCallback {
     }
 
     override fun selectOption(view: View) {
-        /* if (view.id == R.id.Doctor_radioBtn) {
-         selectedOption = 1
-     } else if (view.id == R.id.Patient_radioBtn) {
-         selectedOption = 2
-     } else if (view.id == R.id.Content_radioBtn) {
-         selectedOption = 3
-     }*/
+         if (view.id == R.id.male_radioBtn) {
+             genderOption ="Male"
+     } else if (view.id == R.id.female_radioBtn) {
+             genderOption ="Female"
+     }
     }
 
     private fun readSpinnerData() {

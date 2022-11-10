@@ -31,7 +31,7 @@
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="@dimen/_100sdp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:background="@drawable/logo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,7 @@
                 android:background="@drawable/rounded_edittext"
                 android:drawableStart="@drawable/user_icon"
                 android:ems="10"
-                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:fontFamily="@font/avenirltstd_medium"
                 android:hint="first name"
                 android:inputType="text"
@@ -62,7 +62,7 @@
                 android:id="@+id/lname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:background="@drawable/rounded_edittext"
                 android:drawableStart="@drawable/user_icon"
                 android:ems="10"
@@ -82,7 +82,7 @@
                 android:id="@+id/email_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:background="@drawable/rounded_edittext"
                 android:drawableStart="@drawable/email_icon"
                 android:ems="10"
@@ -103,7 +103,7 @@
                 android:id="@+id/password_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:background="@drawable/rounded_edittext"
                 android:drawableStart="@drawable/password_icon"
                 android:ems="10"
@@ -123,7 +123,7 @@
                 android:id="@+id/confirm_pw"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:background="@drawable/rounded_edittext"
                 android:drawableStart="@drawable/password_icon"
                 android:ems="10"
@@ -139,6 +139,45 @@
                 app:layout_constraintTop_toBottomOf="@+id/password_et"
                 app:tint="@color/orange_color" />
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/confirm_pw">
+
+                <RadioButton
+                    android:id="@+id/male_radioBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/orange_color"
+                    android:text="@string/male"
+                    android:textSize="@dimen/_12sdp"
+                    android:onClick="@{(v) -> registrationActivityCallback.selectOption(v)}"
+                    android:fontFamily="@font/avenirltstd_medium"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <RadioButton
+                    android:id="@+id/female_radioBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/female"
+                    android:textSize="@dimen/_12sdp"
+                    android:textColor="@color/orange_color"
+                    android:onClick="@{(v) -> registrationActivityCallback.selectOption(v)}"
+                    android:fontFamily="@font/avenirltstd_medium"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/spinner_cl"
@@ -146,11 +185,11 @@
                 app:layout_constraintDimensionRatio="5:1"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:background="@drawable/rounded_edittext"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/confirm_pw">
+                app:layout_constraintTop_toBottomOf="@+id/radio_group">
 
 
                 <Spinner
@@ -205,7 +244,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/SignUpBtn"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:padding="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_3sdp"
                 android:layout_marginLeft="@dimen/_30sdp"
                 android:layout_marginRight="@dimen/_30sdp">
 
