@@ -9,9 +9,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.poc.onlinehospitalappointment.R
 import com.poc.onlinehospitalappointment.adapter.DoctorAdapter
+import com.poc.onlinehospitalappointment.base.BaseFragment
 import com.poc.onlinehospitalappointment.data.Doctor
+import com.poc.onlinehospitalappointment.listeners.AppointmentCallback
+import com.poc.onlinehospitalappointment.ui.activity.BookingFragment
 
-class AppointmentFragment : Fragment() {
+class AppointmentFragment : BaseFragment(),AppointmentCallback {
     private lateinit var recyclerView: RecyclerView
     private lateinit var DoctorList: ArrayList<Doctor>
     override fun onCreateView(
@@ -67,10 +70,21 @@ class AppointmentFragment : Fragment() {
         )
 
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        recyclerView.adapter = DoctorAdapter(ArrayList<Doctor>())
+            // recyclerView.adapter = DoctorAdapter(ArrayList<Doctor>())
 //
-        recyclerView.adapter = DoctorAdapter(DoctorList)
+        recyclerView.adapter = DoctorAdapter(DoctorList,this@AppointmentFragment)
 
         return view
+    }
+
+    override fun onBookClick(doctorData: Doctor) {
+        val bookingFragment: BookingFragment = BookingFragment.newInstance(
+            doctorData
+        )
+        val fragmentManager = requireActivity().supportFragmentManager
+        fragmentManager.beginTransaction()
+            .replace(R.id.container, bookingFragment, "")
+            .addToBackStack("home")
+            .commit()
     }
 }

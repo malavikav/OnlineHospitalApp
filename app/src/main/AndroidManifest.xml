@@ -38,9 +38,7 @@
         <activity
             android:name=".ui.activity.Booked"
             android:exported="true" />
-        <activity
-            android:name=".ui.activity.Booking"
-            android:exported="true" />
+
     </application>
 
 </manifest>
