@@ -9,9 +9,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.poc.onlinehospitalappointment.R
 import com.poc.onlinehospitalappointment.adapter.DoctorAdapter
+import com.poc.onlinehospitalappointment.base.BaseFragment
 import com.poc.onlinehospitalappointment.data.Doctor
+import com.poc.onlinehospitalappointment.listeners.AppointmentCallback
 
-class AppointmentFragment : Fragment() {
+class AppointmentFragment : BaseFragment(),AppointmentCallback {
     private lateinit var recyclerView: RecyclerView
     private lateinit var DoctorList: ArrayList<Doctor>
     override fun onCreateView(
@@ -31,7 +33,8 @@ class AppointmentFragment : Fragment() {
                 "Cardiologist",
                 "A cardiologist is a physician who's an expert in the care of your heart and blood vessels.",
                 "MBBS",
-                "Book")
+                "Book",
+            "12097532")
         )
         DoctorList.add(
             Doctor(R.drawable.img_1,
@@ -39,7 +42,8 @@ class AppointmentFragment : Fragment() {
                 "Psychologist",
                 "A psychologist is a professional who practices psychology and studies mental states, perceptual, cognitive, emotional, and social processes and behavior.",
                 "MBBS",
-                "Book")
+                "Book",
+            "123456789")
         )
         DoctorList.add(
             Doctor(R.drawable.img_2,
@@ -47,7 +51,8 @@ class AppointmentFragment : Fragment() {
                 "Dentist",
                 "A dentist, also known as a dental surgeon, is a health care professional who specializes in dentistry (the diagnosis, prevention, management, and treatment of diseases and conditions of the oral cavity",
                 "BDS",
-                "Book")
+                "Book",
+            "1234567")
         )
         DoctorList.add(
             Doctor(R.drawable.img_3,
@@ -55,7 +60,8 @@ class AppointmentFragment : Fragment() {
                 "Surgeon",
                 "In modern medicine, a surgeon is a medical professional who performs surgery.",
                 "MBBS,MD",
-                "Book")
+                "Book",
+            "98765432")
         )
         DoctorList.add(
             Doctor(R.drawable.img_4,
@@ -63,14 +69,26 @@ class AppointmentFragment : Fragment() {
                 "ENT",
                 "An otolaryngologist or an ENT doctor is a specialist who diagnoses and treats diseases of ear, nose, and throat.",
                 "MBBS",
-                "Book")
+                "Book",
+            "1238765")
         )
 
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        recyclerView.adapter = DoctorAdapter(ArrayList<Doctor>())
+            // recyclerView.adapter = DoctorAdapter(ArrayList<Doctor>())
 //
-        recyclerView.adapter = DoctorAdapter(DoctorList)
+        recyclerView.adapter = DoctorAdapter(DoctorList,this@AppointmentFragment)
 
         return view
+    }
+
+    override fun onBookClick(doctorData: Doctor) {
+        val bookingFragment: BookingFragment = BookingFragment.newInstance(
+            doctorData
+        )
+        val fragmentManager = requireActivity().supportFragmentManager
+        fragmentManager.beginTransaction()
+            .replace(R.id.container, bookingFragment, "")
+            .addToBackStack("home")
+            .commit()
     }
 }
