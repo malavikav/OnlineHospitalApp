@@ -1,8 +1,9 @@
-package com.poc.onlinehospitalappointment.ui.activity
+package com.poc.onlinehospitalappointment.ui.fragment
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Build
 import android.os.Bundle
@@ -11,22 +12,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.RequiresApi
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.poc.onlinehospitalappointment.R
 import com.poc.onlinehospitalappointment.base.BaseFragment
+import com.poc.onlinehospitalappointment.constants.Constants
 import com.poc.onlinehospitalappointment.data.Doctor
+import com.poc.onlinehospitalappointment.databinding.FragmentBookingBinding
+import com.poc.onlinehospitalappointment.repository.AppointmentFactory
+import com.poc.onlinehospitalappointment.ui.activity.Booked
+import com.poc.onlinehospitalappointment.viewmodel.AppointmentViewModel
 import java.util.*
-
 private const val DOCTOR_DATA = "param2"
-class BookingFragment(private val doctorData:Doctor) : BaseFragment(), View.OnClickListener, DatePickerDialog.OnDateSetListener,
+class BookingFragment(private val doctorData: Doctor) : BaseFragment(), View.OnClickListener, DatePickerDialog.OnDateSetListener,
     TimePickerDialog.OnTimeSetListener {
-    lateinit var date: EditText
-    lateinit var time: EditText
-    lateinit var book: TextView
-    lateinit var datePicker: Button
-    lateinit var timePicker: Button
-    lateinit var desc: EditText
+
     private var doctordetailslist: Bundle? = null
+    private lateinit var binding: FragmentBookingBinding
+    private lateinit var appointmentViewModel: AppointmentViewModel
 
     companion object {
         @JvmStatic
@@ -50,54 +52,97 @@ class BookingFragment(private val doctorData:Doctor) : BaseFragment(), View.OnCl
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_booking, container, false)
+        binding = FragmentBookingBinding.inflate(inflater, container, false)
 
-        date = view.findViewById(R.id.date)
-        time = view.findViewById(R.id.time)
-        book = view.findViewById(R.id.book)
-        desc = view.findViewById(R.id.p_desc)
+        appointmentViewModel = ViewModelProvider(this, AppointmentFactory(requireContext()))[AppointmentViewModel::class.java]
 
-        book.setOnClickListener {
-            val description = desc.text.toString()
-            val datee = date.text.toString()
-            val timee = time.text.toString()
+
+//        date = view.findViewById(R.id.date)
+//        time = view.findViewById(R.id.time)
+//        book = view.findViewById(R.id.book)
+//        desc = view.findViewById(R.id.p_desc)
+
+        binding.book.setOnClickListener {
+            val description = binding.pDesc.text.toString()
+            val datee = binding.date.text.toString()
+            val timee = binding.time.text.toString()
             if (description.isEmpty()) {
-                desc.error = " Description is empty"
+                binding.pDesc.error = " Description is empty"
                 return@setOnClickListener
             } else if (datee.isEmpty()) {
-                date.error = "Invalid Date"
+                binding.date.error = "Invalid Date"
                 return@setOnClickListener
             } else if (timee.isEmpty()) {
-                time.error = "Invalid Time"
+                binding.time.error = "Invalid Time"
                 return@setOnClickListener
             }
+            else{observeAppointment(sharedPreferance.read(Constants.USER_FNAME,"")!!,
+                sharedPreferance.read(Constants.USER_ID,"")!! ,
+                doctorData.DName,
+                doctorData.DId,
+                binding.date.text.toString(),
+                binding.time.text.toString(),
+                "pending",binding.pDesc.text.toString())}
 
 
             //book.setOnClickListener {
-            val builder = AlertDialog.Builder(requireContext())
-            builder.setMessage("Do you want to book appointment?")
-            builder.setPositiveButton("Yes") { dialogInterface, which ->
-                Toast.makeText(context, "clicked yes", Toast.LENGTH_LONG).show()
-            }
+//            val builder = AlertDialog.Builder(requireContext())
+//            val alertDialog: AlertDialog = builder.create()
+//            builder.setMessage("Do you want to book appointment?")
+//            builder.setPositiveButton("Yes") { dialogInterface, which ->
+//
+//                Toast.makeText(context, "clicked yes", Toast.LENGTH_LONG).show()
+//                observeAppointment("PATIENT NAME",
+//                    "PATIENT ID ",
+//                    "DOCTOR NAME",
+//                    "DOCTOR ID",
+//                    "DATE",
+//                    "TIME",
+//                    "pending")
+//
+//
+//            }
+//
+//            builder.setNegativeButton("No") { dialogInterface, which ->
+//                Toast.makeText(context, "clicked No", Toast.LENGTH_LONG).show()
+//            alertDialog.dismiss()
+//            }
+//
+//            alertDialog.setCancelable(false)
+//            alertDialog.show()
 
-            builder.setNegativeButton("No") { dialogInterface, which ->
-                Toast.makeText(context, "clicked No", Toast.LENGTH_LONG).show()
-
-            }
-            val alertDialog: AlertDialog = builder.create()
-            alertDialog.setCancelable(false)
-            alertDialog.show()
-            book.setOnClickListener {
-                showAlertDialogButtonClicked()
-            }
         }
-        date.setOnClickListener(this)
-        time.setOnClickListener(this)
-        return view
+        binding.date.setOnClickListener(this)
+        binding.time.setOnClickListener(this)
+        return binding.root
+    }
+
+    private fun observeAppointment(
+        patientName: String,
+        patientId: String,
+        doctorName: String,
+        doctorId: String,
+        date: String,
+        time: String,
+        status: String,
+        description:String
+    ) {
+        appointmentViewModel?.bookAppointmentCreate(
+            patientName ,
+            patientId ,
+            doctorName ,
+            doctorId ,
+            date ,
+            time ,
+            status,
+        description)
+        showAlertDialogButtonClicked()
+
+
     }
 
 
@@ -121,13 +166,13 @@ class BookingFragment(private val doctorData:Doctor) : BaseFragment(), View.OnCl
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         val value = ("${month + 1} / $dayOfMonth / $year").toString()
-        date.setText(value)
+        binding.date.setText(value)
         // time.setText(value)
     }
 
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
         val myTime = " $hourOfDay : $minute"
-        time.setText(myTime)
+        binding.time.setText(myTime)
     }
 
     fun showAlertDialogButtonClicked() {
