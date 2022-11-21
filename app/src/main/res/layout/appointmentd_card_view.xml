@@ -40,18 +40,20 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintHorizontal_weight="0.20"
             app:cardCornerRadius="@dimen/_20sdp"
+            android:background="@drawable/ic_consulting_list_for_doctor"
+            android:src="@drawable/ic_consulting_list_for_doctor"
             android:layout_margin="@dimen/_5sdp">
 
-            <ImageView
-                android:id="@+id/dc_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:contentDescription="@string/app_name"
-                android:background="@drawable/img"
+<!--            <ImageView-->
+<!--                android:id="@+id/dc_1"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_horizontal"-->
+<!--                android:contentDescription="@string/app_name"-->
+<!--                android:background="@drawable/img"-->
 
 
-                />
+<!--                />-->
 
         </androidx.cardview.widget.CardView>
 
