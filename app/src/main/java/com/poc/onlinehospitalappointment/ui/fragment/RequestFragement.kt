@@ -10,8 +10,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.poc.onlinehospitalappointment.R
-import com.poc.onlinehospitalappointment.adapter.ApprovingAdapter
+
 import com.poc.onlinehospitalappointment.adapter.RequestAdapter
+import com.poc.onlinehospitalappointment.base.BaseFragment
 import com.poc.onlinehospitalappointment.data.Request
 import com.poc.onlinehospitalappointment.viewmodel.RequestViewModel
 
@@ -23,15 +24,14 @@ private const val ARG_PARAM2 = "param2"
  * Use the [Approving.newInstance] factory method to
  * create an instance of this fragment.
  */
-private lateinit var viewModel : RequestViewModel
-private lateinit var userRecyclerView: RecyclerView
-lateinit var adapter: RequestAdapter
 
-class RequestFragement: Fragment() {
+class RequestFragement: BaseFragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
+    private lateinit var viewModel : RequestViewModel
+    private lateinit var userRecyclerView: RecyclerView
+    lateinit var adapter: RequestAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
