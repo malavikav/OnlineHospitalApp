@@ -26,7 +26,7 @@ class ApprovingFragment:Fragment() {
 
         ApprovingList = ArrayList()
         ApprovingList.add(
-            Approving(
+            Approving(R.drawable.img,
                 "Roshan Reddi",
                 "fever,chills",
                 "Dr Johnsmith",
@@ -36,7 +36,7 @@ class ApprovingFragment:Fragment() {
         )
 
         ApprovingList.add(
-            Approving(
+            Approving(R.drawable.img_3,
                 "Rashmika mandanna",
                 "tiredness,headache",
                 "Dr Rishab Shetty",
@@ -45,7 +45,7 @@ class ApprovingFragment:Fragment() {
             )
         )
         ApprovingList.add(
-            Approving(
+            Approving(R.drawable.img_1,
                 "Sudeep reddi",
                 "headache",
                 "Dr Prashanti",
@@ -54,7 +54,7 @@ class ApprovingFragment:Fragment() {
             )
         )
         ApprovingList.add(
-            Approving(
+            Approving(R.drawable.img_2,
                 "Ruchitha shetty",
                 "vomitting,diarrhea",
                 "Dr Rakshith Shetty",
@@ -63,7 +63,7 @@ class ApprovingFragment:Fragment() {
             )
         )
         ApprovingList.add(
-            Approving(
+            Approving(R.drawable.img_4,
                 "Prashanth PM",
                 "watery red eyes",
                 "Dr Veeresh", "13-11-2022 1:00pm",
@@ -71,7 +71,7 @@ class ApprovingFragment:Fragment() {
             )
         )
         ApprovingList.add(
-            Approving(
+            Approving(R.drawable.img_3,
                 "Prakruthi Reddi",
                 "dry caugh",
                 "Dr Mahesh patil",
@@ -80,7 +80,7 @@ class ApprovingFragment:Fragment() {
             )
         )
         ApprovingList.add(
-            Approving(
+            Approving(R.drawable.img,
                 "Abhinav CM",
                 "dry caugh",
                 "Dr Sukrutha",

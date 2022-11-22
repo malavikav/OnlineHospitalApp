@@ -4,51 +4,67 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.poc.onlinehospitalappointment.R
+import com.poc.onlinehospitalappointment.data.Approving
 import com.poc.onlinehospitalappointment.data.Request
 
-class RequestAdapter (private val  RequestList: ArrayList<Request>) : RecyclerView.Adapter<RequestAdapter.MyViewHolder>() {
+class RequestAdapter: RecyclerView.Adapter<RequestAdapter.MyViewHolder>() {
 
-    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val   PName:TextView=itemView.findViewById(R.id.p_rosh)
-        val PDescription: TextView = itemView.findViewById(R.id.p_des)
-        val PDrdetails: TextView = itemView.findViewById(R.id.p_dr)
-        val PDateTime: TextView = itemView.findViewById(R.id.p_dt)
-        val PStatus: TextView = itemView.findViewById(R.id.p_sts)
-        val PApprove:Button=itemView.findViewById(R.id.a_btn)
-    }
+    private val userList = ArrayList<Request>()
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val itemView = LayoutInflater.from(parent.context).inflate(
+            R.layout.request_card_view3,
+            parent,false
+        )
+        return MyViewHolder(itemView)
 
-        val cardItem =
-            LayoutInflater.from(parent.context).inflate(R.layout.request_card_view3, parent, false)
-        return MyViewHolder(cardItem)
     }
+
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val Request = RequestList[position]
-        holder.PName.text = Request.PName
-        holder.PDescription.text = Request.PDescription
-        holder.PDrdetails.text = Request.PDrdetails
-        holder.PDateTime.text = Request.PDateTime
-        holder.PStatus.text = Request.PStatus
-        holder.PApprove.text=Request.PApprove
 
+        val currentitem = userList[position]
+        currentitem.pImage?.let { holder.pImage.setImageResource(it) }
+        holder.patientName.text = currentitem.patientName
+        holder.patientId.text = currentitem.patientId
+        holder.doctorName.text = currentitem.doctorName
+        holder.doctorId.text = currentitem.doctorId
+        holder.date.text = currentitem.date
+        holder.time.text = currentitem.time
+        holder.status.text = currentitem.status
+        holder.description.text = currentitem.description
 
-//      holder.PApprove.setOnClickListener {
-//          val intent = Intent(it.context,ApprovedMain::class.java)
-//            intent.putExtra("position",holder.adapterPosition)
-//            it.context.startActivity(intent)
-//       }
 
     }
-
 
     override fun getItemCount(): Int {
-        return RequestList.size
+        return userList.size
+    }
 
+    fun updateUserList(userList : List<Request>){
+
+        this.userList.clear()
+        this.userList.addAll(userList)
+        notifyDataSetChanged()
 
     }
+
+    class  MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+        var pImage: ImageView = itemView.findViewById(R.id.dc_11)
+        val patientName : TextView = itemView.findViewById(R.id.p_rosh)
+        val patientId : TextView = itemView.findViewById(R.id.p_id)
+        val doctorName : TextView = itemView.findViewById(R.id.p_dr)
+        val doctorId : TextView = itemView.findViewById(R.id.p_did)
+        val date : TextView = itemView.findViewById(R.id.p_dt)
+        val time : TextView = itemView.findViewById(R.id.p_time)
+        val status : TextView = itemView.findViewById(R.id.p_sts)
+        val description : TextView = itemView.findViewById(R.id.p_des)
+
+    }
+
 }
 
