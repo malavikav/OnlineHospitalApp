@@ -5,4 +5,4 @@ data class User (val uid :String?,val fname: String?, val lname: String?, val ty
                  val dob: String?,
                  val gender: String?,
                  val number: String?,
-                 val  enumber: String?)
+                 val  enumber: String?,)

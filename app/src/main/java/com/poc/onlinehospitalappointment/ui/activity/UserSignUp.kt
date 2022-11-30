@@ -124,6 +124,7 @@ class UserSignUp : BaseActivity(), RegistrationActivityCallback {
         gender: String,
         number: String,
         enumber: String,
+        userImage:String
     ) {
         activityRegistrationBinding.loader.visibility = View.VISIBLE
         authViewModel?.registerUser(email,
@@ -135,7 +136,8 @@ class UserSignUp : BaseActivity(), RegistrationActivityCallback {
             dob,
             gender,
             number,
-            enumber)
+            enumber,
+            userImage)
             ?.observe(this, Observer {
                 activityRegistrationBinding!!.loader.visibility = View.GONE
                 if (it !== null && it.isSuccessful) {
@@ -201,6 +203,7 @@ class UserSignUp : BaseActivity(), RegistrationActivityCallback {
             "",
             "",
             genderOption!!,
+            "",
             "",
             ""
         )
