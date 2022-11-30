@@ -59,6 +59,7 @@ class AuthRepository {
                             val age = snapshot.child("age").getValue(String::class.java)
                             val gender = snapshot.child("gender").getValue(String::class.java)
                             val number = snapshot.child("number").getValue(String::class.java)
+                            val userImage = snapshot.child("userImage").getValue(String::class.java)
                             val enumber =
                                 snapshot.child("emergency number").getValue(String::class.java)
                             Log.e("fname", "===>" + fname)
@@ -94,6 +95,7 @@ class AuthRepository {
         ggender: String,
         nnumber: String,
         eenumber: String,
+        userImage: String,
     ): LiveData<Task<AuthResult>> {
         val registerData = MutableLiveData<Task<AuthResult>>()
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(

@@ -24,6 +24,7 @@ import com.google.firebase.storage.UploadTask
 import com.poc.onlinehospitalappointment.base.BaseFragment
 import com.poc.onlinehospitalappointment.constants.Constants
 import com.poc.onlinehospitalappointment.databinding.UserFragmentBinding
+import com.poc.onlinehospitalappointment.preferance.SharedPreferenceClass
 import com.poc.onlinehospitalappointment.viewmodel.ProfileInfoViewModel
 import java.io.File
 import java.text.SimpleDateFormat
@@ -57,7 +58,9 @@ class UserFragment: BaseFragment() {
             val gender = binding.gender.text.toString()
             val number = binding.number.text.toString()
             val enumber = binding.enumber.text.toString()
-            updatedata(userName, age, date, gender, number, enumber)
+            val userImage=sharedPreferance.read(Constants.USER_IMAGE,"")!!.toString()
+            Log.e("link","image url" +userImage)
+            updatedata(userName, age, date, gender, number, enumber, userImage)
         }
         binding.updateImage.setOnClickListener {
             uploadImage()
@@ -78,6 +81,8 @@ class UserFragment: BaseFragment() {
 
     private fun uploadImage() {
 
+        var imageLink: MutableLiveData<String> = MutableLiveData()
+
         val progressDialog = ProgressDialog(requireActivity())
         progressDialog.setMessage("uploading Image.......")
         progressDialog.setCancelable(false)
@@ -86,14 +91,25 @@ class UserFragment: BaseFragment() {
         val now = Date()
         val fileName = sharedPreferance.read(Constants.USER_ID,"")!!
         val storageReference = FirebaseStorage.getInstance().getReference("images/$fileName.jpg")
+        Log.e("storage reference",""+storageReference)
+        storageReference.putFile(file_uri).addOnSuccessListener(
+                OnSuccessListener<UploadTask.TaskSnapshot> { taskSnapshot ->
+                    taskSnapshot.storage.downloadUrl.addOnSuccessListener {
+                        val imageUrl = it.toString()
+                        imageLink.postValue(imageUrl)
+                        sharedPreferance.write(Constants.USER_IMAGE,it.toString())
+//                        Log.e("imageurl"," image link"+imageUrl)
+                      // sharedPreferance.write(Constants.USER_IMAGE, it.toString())
+                    }
 
-        storageReference.putFile(file_uri).addOnSuccessListener {
             binding.pfl.setImageURI(file_uri)
+            Log.e("uri",""+file_uri)
             Toast.makeText(requireActivity(),"updated successfully ",Toast.LENGTH_SHORT).show()
             if (progressDialog.isShowing)
                 progressDialog.dismiss()
 
-        }.addOnFailureListener {
+                })
+            ?.addOnFailureListener {
             Toast.makeText(requireActivity(),"update Failed ",Toast.LENGTH_SHORT).show()
             if (progressDialog.isShowing)
                 progressDialog.dismiss()
@@ -126,6 +142,7 @@ class UserFragment: BaseFragment() {
         gender: String,
         number: String,
         enumber: String,
+        userImage:String
     ) {
 
         val databaseReference: DatabaseReference =
@@ -137,7 +154,8 @@ class UserFragment: BaseFragment() {
             "gender" to gender,
             "dob" to date,
             "number" to number,
-            "enumber" to enumber
+            "enumber" to enumber,
+            "userImage" to userImage,
 
         )
         databaseReference.child(sharedPreferance.read(Constants.USER_ID,"")!!).updateChildren(user).addOnSuccessListener{

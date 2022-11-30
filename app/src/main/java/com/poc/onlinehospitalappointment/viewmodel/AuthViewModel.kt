@@ -34,10 +34,11 @@ class AuthViewModel(val context: Context) : ViewModel() {
         dob: String,
         gender: String,
         number: String,
-        enumber: String
+        enumber: String,
+        userImage:String
     ): LiveData<Task<AuthResult>> {
         return AuthRepository.getInstance(context)
-            .register(email, password, selectedOption, firstname, lastname,age, dob, gender, number, enumber)
+            .register(email, password, selectedOption, firstname, lastname,age, dob, gender, number, enumber,userImage)
     }
 
     /* fun nurseList(firstname:String,  lastname:String, nselectedOption:Int,
