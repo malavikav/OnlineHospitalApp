@@ -8,6 +8,7 @@ class Constants {
         const val IS_USER_LOGGED = "IS_USER_LOGGED"
         const val USER_ID ="USER_ID"
         const val USER_EMAIL ="USER_EMAIL"
+        const val USER_IMAGE ="USER_IMAGE"
 
         const val DOCTOR = "Doctor"
         const val PATIENT = "Patient"

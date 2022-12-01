@@ -80,13 +80,19 @@ class BookingFragment(private val doctorData: Doctor) : BaseFragment(), View.OnC
                 binding.time.error = "Invalid Time"
                 return@setOnClickListener
             }
-            else{observeAppointment(sharedPreferance.read(Constants.USER_FNAME,"")!!,
-                sharedPreferance.read(Constants.USER_ID,"")!! ,
-                doctorData.DName,
-                doctorData.DId,
-                binding.date.text.toString(),
-                binding.time.text.toString(),
-                "pending",binding.pDesc.text.toString())}
+            else{
+                doctorData.DId?.let { it1 ->
+                    doctorData.Dname?.let { it2 ->
+                        observeAppointment(sharedPreferance.read(Constants.USER_FNAME,"")!!,
+                            sharedPreferance.read(Constants.USER_ID,"")!! ,
+                            it2,
+                            it1,
+                            binding.date.text.toString(),
+                            binding.time.text.toString(),
+                            "pending",binding.pDesc.text.toString())
+                    }
+                }
+            }
 
 
             //book.setOnClickListener {

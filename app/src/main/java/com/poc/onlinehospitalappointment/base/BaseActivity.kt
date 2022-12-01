@@ -9,7 +9,7 @@ open class BaseActivity : AppCompatActivity() {
 
     lateinit var sharedPreferance: SharedPreferenceClass
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPreferance = SharedPreferenceClass
         SharedPreferenceClass.init(applicationContext)!!

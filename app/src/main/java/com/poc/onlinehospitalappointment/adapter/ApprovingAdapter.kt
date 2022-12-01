@@ -4,7 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.poc.onlinehospitalappointment.R
 import com.poc.onlinehospitalappointment.data.Approving
@@ -13,12 +15,13 @@ class ApprovingAdapter(private val ApprovingList: ArrayList<Approving>) :
     RecyclerView.Adapter<ApprovingAdapter.MyViewHolder>() {
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var AImage: ImageView = itemView.findViewById(R.id.dc_12)
         val AName: TextView = itemView.findViewById(R.id.p_rosh1)
         val ADescription: TextView = itemView.findViewById(R.id.p_des1)
         val ADrdetails: TextView = itemView.findViewById(R.id.p_dr1)
         val ADateTime: TextView = itemView.findViewById(R.id.p_dt1)
         val AStatus: TextView = itemView.findViewById(R.id.p_sts1)
-        val ACancel: Button = itemView.findViewById(R.id.c_btn)
+        val ACancel: AppCompatTextView = itemView.findViewById(R.id.c_btn)
 
     }
 
@@ -32,6 +35,7 @@ class ApprovingAdapter(private val ApprovingList: ArrayList<Approving>) :
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val Approving = ApprovingList[position]
+        holder.AImage.setImageResource(Approving.AImage)
         holder.AName.text = Approving.AName
         holder.ADescription.text = Approving.ADescription
         holder.ADrdetails.text = Approving.ADrdetails
